@@ -1,3 +1,50 @@
+#include "curses.h"
+
+#include "Scene/Scene.h"
+#include "Game/Game.h"
+
+void update();
+
+
+int main ( int argc, char** argv )
+{
+    auto window = initscr();
+    
+    nodelay(stdscr, TRUE);
+    noecho();
+    
+    if (has_colors())
+        start_color();
+    
+    
+    curs_set(0);
+    
+    int maxX, maxY;
+    getmaxyx(window, maxY, maxX);
+    
+    Aforia::Game::Game game;
+    Aforia::Scene::Scene scene(game, maxX, maxY);
+    
+    while (1)
+    {
+        game.doIdle();
+        scene.render();
+        update();
+    }
+    
+    endwin();
+    
+    return 0;
+}
+
+void update()
+{
+    napms(200);
+    refresh();
+}
+
+/*
+
 #include <stdio.h>
 #include <signal.h>
 #include <curses.h>
@@ -40,7 +87,7 @@ int main(int argc, char **argv)
     srand(seed);
     flag = 0;
     
-    while (getch() == ERR)      /* loop until a key is hit */
+    while (getch() == ERR)
     {
         do {
             start = rand() % (COLS - 3);
@@ -144,3 +191,5 @@ void get_color(void)
     chtype bold = (rand() % 2) ? A_BOLD : A_NORMAL;
     attrset(COLOR_PAIR(rand() % 8) | bold);
 }
+
+*/
