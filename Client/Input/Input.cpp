@@ -48,6 +48,8 @@ void Input::doIdle()
         key = getchar();
     }
     
+    fseek(stdin,0,SEEK_END);
+    
     
     switch (key)
     {
