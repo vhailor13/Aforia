@@ -1,6 +1,9 @@
 
+set(CMAKE_CXX_STANDARD 11)
 
 add_executable (client main.cpp)
+
+# Curses lib
 
 if (APPLE)
 	find_package (Curses REQUIRED)
@@ -18,3 +21,11 @@ if (WIN32)
 	target_link_libraries(client ${CLIENT_LIBRARIES})
 
 endif()
+
+# Sources
+
+add_subdirectory (Utils)
+add_subdirectory (Game)
+add_subdirectory (Input)
+add_subdirectory (Model)
+add_subdirectory (Scene)
