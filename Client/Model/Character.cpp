@@ -10,7 +10,7 @@
 
 using namespace Aforia::Game;
 
-void Character::setPosition(Utils::Point pos)
+void Character::setPosition(Aforia::Utils::Point pos)
 {
     _pos = pos;
 }

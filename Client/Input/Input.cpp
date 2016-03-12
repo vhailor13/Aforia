@@ -10,6 +10,11 @@
 
 using namespace Aforia::Input;
 
+Input::Input()
+{
+
+}
+
 void Input::setMoveLeft( std::function<void()> moveLeft)
 {
     _onMoveLeft = moveLeft;
@@ -32,7 +37,7 @@ void Input::setMoveDown( std::function<void()> moveDown)
 
 void Input::doIdle()
 {
-    int key = getchar();
+	int key = getchar();
     
     if ( key == 27 )
     {

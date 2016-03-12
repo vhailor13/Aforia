@@ -9,6 +9,7 @@
 #pragma once
 
 #include <functional>
+#include "pthread.h"
 
 namespace Aforia { namespace Input {
     
@@ -16,6 +17,9 @@ namespace Aforia { namespace Input {
 class Input
 {
 private:
+
+	pthread_t thread;
+
     // Movement
     std::function<void()> _onMoveLeft;
     std::function<void()> _onMoveRight;
@@ -23,6 +27,9 @@ private:
     std::function<void()> _onMoveDown;
     
 public:
+
+	Input();
+
     // Movement
     void setMoveLeft( std::function<void()> moveLeft);
     void setMoveRight(std::function<void()> moveRight);

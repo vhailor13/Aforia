@@ -50,5 +50,5 @@ Character& Game::getCharacter()
 
 void Game::doIdle()
 {
-        _input.doIdle();
+       //  _input.doIdle();
 }

@@ -13,11 +13,20 @@ endif()
 
 if (WIN32)
 
+# PDCurses
 	find_path(PDCURSES_INCLUDE_DIR NAMES curses.h PATHS ./PDCurses)
 	include_directories( ${PDCURSES_INCLUDE_DIR} )
-
 	find_library(PDCURSES_LIBRARY NAMES pdcurses.lib PATHS ./PDCurses)
-	set(CLIENT_LIBRARIES ${CLIENT_LIBRARIES} ${PDCURSES_LIBRARY})
+
+	# set(CLIENT_LIBRARIES ${CLIENT_LIBRARIES} ${PDCURSES_LIBRARY})
+	# target_link_libraries(client ${CLIENT_LIBRARIES})
+
+# pthread
+	find_path(PTHREAD_INCLUDE_DIR NAMES pthread.h PATHS ./pthread)
+	include_directories( ${PTHREAD_INCLUDE_DIR} )
+	find_library(PTHREAD_LIBRARY NAMES pthreadVC2.lib PATHS ./pthread)
+
+	set(CLIENT_LIBRARIES ${CLIENT_LIBRARIES} ${PDCURSES_LIBRARY} ${PTHREAD_LIBRARY})
 	target_link_libraries(client ${CLIENT_LIBRARIES})
 
 endif()

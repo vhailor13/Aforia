@@ -13,7 +13,7 @@
 
 using namespace Aforia::Scene;
 
-Scene::Scene(Game::Game& game, int max_x, int max_y):
+Scene::Scene(Aforia::Game::Game& game, int max_x, int max_y):
 _game(game),
 _maxX(max_x),
 _maxY(max_y)
